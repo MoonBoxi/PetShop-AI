@@ -1,12 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category, Product, Banner
+from scheduling.models import Service, ServiceType
 from django.db.models import Q
 
 def index(request):
     featured_products = Product.objects.filter(is_featured=True)
     categories = Category.objects.all()
     banners = Banner.objects.filter(is_active=True)
-    return render(request, 'store/index.html', {'featured_products': featured_products, 'categories': categories, 'banners': banners})
+    service_types = ServiceType.objects.all()
+    return render(request, 'store/index.html', {
+        'featured_products': featured_products, 
+        'categories': categories, 
+        'banners': banners, 
+        'service_types': service_types
+    })
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)

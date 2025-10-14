@@ -1,0 +1,14 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="alert alert-success text-center" role="alert">
+        <h4 class="alert-heading">Booking Confirmed!</h4>
+        <p>Your booking for {{ booking.service.name }} has been confirmed.</p>
+        <hr>
+        <p class="mb-0"><strong>Pet:</strong> {{ booking.pet_name }}</p>
+        <p class="mb-0"><strong>Date:</strong> {{ booking.time_slot.date|date:"F d, Y" }}</p>
+        <p class="mb-0"><strong>Time:</strong> {{ booking.time_slot.start_time|time:"H:i" }}</p>
+    </div>
+</div>
+{% endblock %}
