@@ -42,13 +42,15 @@ class Command(BaseCommand):
             )
 
         self.stdout.write('Creating banners...')
-        for i in range(3):
-            Banner.objects.create(
-                title=f'Banner Promocional {i+1}',
-                image=f'banners/banner_{i+1}.png',
-                link_url='/',
-                is_active=True
-            )
+        # CORRECTION: Banners now correctly link to a random existing category.
+        if created_categories: # Ensure categories exist before creating banners
+            for i in range(3):
+                Banner.objects.create(
+                    title=f'Banner Promocional {i+1}',
+                    image=f'banners/banner_{i+1}.png',
+                    target_category=random.choice(created_categories), # Correct field
+                    is_active=True
+                )
 
         self.stdout.write('Creating service types...')
         grooming = ServiceType.objects.create(name='Grooming')

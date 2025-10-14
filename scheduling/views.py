@@ -6,12 +6,18 @@ from .services import get_or_create_time_slots
 from datetime import datetime
 
 def service_list(request, service_type_id=None):
+    service_type = None
+    services = Service.objects.all()
+
     if service_type_id:
         service_type = get_object_or_404(ServiceType, id=service_type_id)
-        services = Service.objects.filter(service_type=service_type)
-    else:
-        services = Service.objects.all()
-    return render(request, 'scheduling/service_list.html', {'services': services})
+        services = services.filter(service_type=service_type)
+
+    context = {
+        'service_type': service_type,
+        'services': services
+    }
+    return render(request, 'scheduling/service_list.html', context)
 
 @login_required
 def select_date(request, service_id):
