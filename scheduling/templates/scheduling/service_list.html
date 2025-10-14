@@ -1,0 +1,26 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">{{ service_type.name }} Services</h2>
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.name }}</h5>
+                    <p class="card-text">{{ service.description }}</p>
+                    <p class="card-text"><strong>Duration:</strong> {{ service.duration }} minutes</p>
+                    <p class="card-text"><strong>Price:</strong> R$ {{ service.price }}</p>
+                    <a href="{% url 'scheduling:select_date' service.id %}" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center">There are no services available for this category at the moment. Please check back later.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

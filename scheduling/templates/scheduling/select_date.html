@@ -1,0 +1,30 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Select a Date for {{ service.name }}</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form action="#" method="get" id="date-selection-form">
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" id="date" name="date" class="form-control">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Find Available Times</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('date-selection-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const date = document.getElementById('date').value;
+        if (date) {
+            window.location.href = "{% url 'scheduling:select_time_slot' service.id '0000-00-00' %}".replace('0000-00-00', date);
+        }
+    });
+</script>
+{% endblock %}
