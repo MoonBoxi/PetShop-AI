@@ -10,6 +10,16 @@ GeminiPet is a functional e-commerce prototype for a pet supply store, developed
 
 ---
 
+### Project Showcase
+
+**Modern style HomePage for a e-commerce petshop**
+![Home Page](docs/images/homepage.png)
+
+**Interactive Sales Form with Autocomplete and Dynamic Calculations**
+![Cart && You May also Like](docs/images/cart.png)
+
+---
+
 ## The Role of Artificial Intelligence in the Process
 
 This project was not "made by AI," but rather **directed by a developer using AI as a core productivity tool.** My role in the process involved:
